@@ -1,37 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Access Restricted</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-        .message {
-            text-align: center;
-            border: 2px solid #f5c6cb;
-            padding: 30px;
-            border-radius: 10px;
-            background-color: #f1b0b7;
-        }
-        h1 {
-            margin: 0 0 10px 0;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Access Restricted</title>
+<style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f8d7da;
+        color: #721c24;
+        text-align: center;
+    }
+    .message {
+        border: 2px solid #f5c6cb;
+        padding: 30px;
+        border-radius: 10px;
+        background-color: #f1b0b7;
+    }
+    h1 {
+        margin: 0 0 10px 0;
+    }
+    p {
+        margin: 5px 0;
+    }
+    #countdown {
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+</style>
 </head>
 <body>
-    <div class="message">
-        <h1>⚠ Sorry!</h1>
-        <p>You can only use HTTP, not HTTPS.</p>
-    </div>
-<meta http-equiv="refresh" content="0; url=http://panel.voidium.uk/" />
+<div class="message">
+    <h1>⚠ Sorry!</h1>
+    <p>You can only use HTTP, not HTTPS.</p>
+    <p>We think your browser is a bit funny, so we will send you to a proxy server.</p>
+    <p>Redirecting in <span id="countdown">5</span> seconds...</p>
+</div>
+
+<script>
+    let countdown = 5;
+    const countdownEl = document.getElementById('countdown');
+
+    const interval = setInterval(() => {
+        countdown--;
+        countdownEl.textContent = countdown;
+        if (countdown <= 0) {
+            clearInterval(interval);
+            // Redirect to proxy server
+            window.location.href = "https://pane-fussy.ojdawson1107.workers.dev/";
+        }
+    }, 1000);
+</script>
 </body>
 </html>
